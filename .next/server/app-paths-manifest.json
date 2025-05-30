@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/weather/route": "app/api/weather/route.js",
+  "/api/list/[id]/route": "app/api/list/[id]/route.js",
+  "/api/gear/route": "app/api/gear/route.js",
+  "/api/list/route": "app/api/list/route.js",
+  "/(dashboard)/page": "app/(dashboard)/page.js",
+  "/(dashboard)/list/[id]/page": "app/(dashboard)/list/[id]/page.js"
+}

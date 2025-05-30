@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/PackingWeightChart.tsx -> recharts\":{\"id\":\"components/PackingWeightChart.tsx -> recharts\",\"files\":[\"static/chunks/_app-pages-browser_node_modules_recharts_es6_index_js.js\"]}}"
