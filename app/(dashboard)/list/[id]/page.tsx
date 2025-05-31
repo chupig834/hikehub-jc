@@ -15,6 +15,7 @@ import UserDataContext from "@/components/user-data-context"
 import SidebarContext from "@/components/sidebar/sidebar-context"
 import ShareModal from "@/components/share-modal"
 import { useSession } from "next-auth/react"
+import TripDetailTab from "@/components/TripDetailTab"
 
 export default function DashboardPage() {
   const params = useParams()
@@ -388,7 +389,8 @@ export default function DashboardPage() {
 
         {/* Summary Section: 3 Cards */}
         <div className="flex flex-col lg:flex-row gap-6 mb-6">
-          <TripDetail tripData={{
+          <TripDetailTab
+            tripData={{
               trailName: tripDetailsFromChild?.trailName || data?.trailName || "",
               location: tripDetailsFromChild?.location || data?.location || "",
               startDate: tripDetailsFromChild?.startDate || formatDate(data.startDate),

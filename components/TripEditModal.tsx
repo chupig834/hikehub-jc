@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AutocompleteInput from "./AutocompleteInput";
+import AutocompleteTrail from "./AutocompleteTrail";
 
 interface TripDetails {
     trailName: string;
@@ -32,9 +33,7 @@ export default function TripEditModal({
     altitudeUnit: tripDetails.altitudeUnit || "ft",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setLocalDetails((prev) => ({ ...prev, [name]: value }));
   };
@@ -56,13 +55,10 @@ export default function TripEditModal({
             {/* Trail Name */}
             <div>
               <label className="block text-xs text-gray-700 font-semibold mb-1">Trail Name</label>
-              <input
-                type="text"
+              <AutocompleteTrail
                 name="trailName"
                 value={localDetails.trailName}
                 onChange={handleChange}
-                placeholder="Enter Trail Name"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary text-sm"
               />
             </div>
 
