@@ -3,7 +3,7 @@ import { MapPin, Calendar, Ruler, Mountain, Pencil } from "lucide-react";
 import TripEditModal from "./TripEditModal";
 import AutocompleteInput from "./AutocompleteInput";
 
-export default function TripDetail({tripData, onTripDetailChange, disabled = false}) {
+export default function TripDetail({tripData, onTripDetailChange, onTrailInfoUpdate, disabled = false}) {
   const [isEditing, setIsEditing] = useState(false);
   const [tripDetails, setTripDetails] = useState({
     trailName: "",
@@ -94,10 +94,25 @@ export default function TripDetail({tripData, onTripDetailChange, disabled = fal
         <TripEditModal
           tripDetails={tripDetails}
           setTripDetails={setTripDetails}
-          onSave={(updatedDetails) => {
+          onSave={async (updatedDetails) => {
             setTripDetails(updatedDetails);
             onTripDetailChange(updatedDetails);
             setIsEditing(false);
+            try {
+                const res = await fetch("/api/generateTrailInfo", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    trailName: updatedDetails.trailName,
+                  }),
+                });
+                const json = await res.json();
+                const parsed = JSON.parse(json.data); // or use a safe parser
+                console.log(parsed)
+                onTrailInfoUpdate?.(parsed); // only if the prop was passed
+            } catch (err) {
+                console.error("Failed to fetch trail info:", err);
+              }
           }}
           onClose={() => setIsEditing(false)}
         />

@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
         const prompt = `
         Generate a short bullet list of hiking information for the trail ${trailName}. 
         Include difficult level, estimated time, elevation gain, length in miles,  highlights, and any safety tips 
-        Return the result in a json format`;
+        Response only with raw JSON without triple backticks or markdown`;
 
         const completion = await client.chat.completions.create({
             model: 'o4-mini',
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
         const result = completion.choices[0].message.content;
 
-        return NextResponse.json({info: result}, {status: 200})
+        return NextResponse.json({data: result}, {status: 200})
 
     }
     catch {
