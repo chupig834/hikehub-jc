@@ -1,4 +1,4 @@
-# CSCI577a Project
+# HikeHub - Best Packpacking App
 
 A modern web application built with Next.js, featuring authentication, dashboard, and data visualization capabilities.
 
